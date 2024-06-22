@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int length = scanner.nextInt();
+        int breadth = scanner.nextInt();
+        
+        if (length > 0 && breadth > 0) {
+            float area = (float) length * breadth;
+            System.out.println(area);
+        } else {
+            System.out.println("Invalid");
+        }
+    }
+}

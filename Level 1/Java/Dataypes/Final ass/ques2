@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        char ch = scanner.next().charAt(0);
+        
+        if (Character.isLetter(ch)){
+            int asciiInt = (int) ch;
+            float asciiFloat = (float) ch;
+            byte asciiByte = (byte) ch;
+            short asciiShort = (short) ch;
+            
+            System.out.println("int:" + asciiInt);
+            System.out.println("float:" + asciiFloat);
+            System.out.println("byte:" + asciiByte);
+            System.out.println("short:" + asciiShort);
+        }
+        else
+            System.out.println("Invalid");
+    }
+}

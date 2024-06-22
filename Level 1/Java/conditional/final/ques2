@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int leftoverCoins = scanner.nextInt();
+        if (leftoverCoins < 1 || leftoverCoins > 9) {
+            System.out.println("Invalid Input");
+        }
+        else{
+            char pocketedRed = scanner.next().charAt(0);
+            int totalPoints = leftoverCoins;
+            if (pocketedRed == 'r') {
+                totalPoints += 5;
+            }
+            System.out.println(totalPoints);
+        }
+    }
+}
