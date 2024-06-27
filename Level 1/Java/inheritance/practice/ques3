@@ -1,0 +1,40 @@
+// You are using Java
+import java.util.*;
+
+class Demo {
+    static String moveSpecialCharacters(String str) {
+        
+        List<Character> normalChars = new ArrayList<>();
+        List<Character> specialChars = new ArrayList<>();
+        
+        for (char ch : str.toCharArray()) {
+            if (Character.isLetterOrDigit(ch)) {
+                normalChars.add(ch);
+            } else {
+                specialChars.add(ch);
+            }
+        }
+        
+        
+        StringBuilder result = new StringBuilder();
+        for (char ch : normalChars) {
+            result.append(ch);
+        }
+        for (char ch : specialChars) {
+            result.append(ch);
+        }
+        
+        return result.toString();
+    }
+}
+
+public class Main extends Demo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String str = scanner.nextLine();
+        scanner.close();
+        
+        String result = moveSpecialCharacters(str);
+        System.out.println(result);
+    }
+}

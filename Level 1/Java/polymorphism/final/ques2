@@ -1,0 +1,25 @@
+// You are using Java
+public class Main {
+    
+    
+    public static void main() {
+        System.out.println("Hi");
+    }
+    
+    
+    public static void main(String arg1) {
+        System.out.println("Overloaded: " + arg1);
+    }
+    
+    
+    public static void main(String arg1, String arg2) {
+        System.out.println("Overloaded: " + arg1 + " & " + arg2);
+    }
+    
+    
+    public static void main(String[] args) {
+        main(); 
+        main("Hello World"); 
+        main("Tom", "Jerry");
+    }
+}

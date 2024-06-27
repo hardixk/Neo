@@ -1,0 +1,29 @@
+// You are using Java
+import java.util.Scanner;
+
+class EMI {
+    public EMI(double principal, double rate, int timePeriod) {
+        double monthlyInterestRate = rate / (12 * 100); // monthly interest rate
+        int months = timePeriod * 12; // total number of months
+        
+        
+        double emi = principal * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, months) /
+                     (Math.pow(1 + monthlyInterestRate, months) - 1);
+        
+        System.out.println("EMI: " + emi);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        double principal = scanner.nextDouble();
+        double rate = scanner.nextDouble();
+        int timePeriod = scanner.nextInt();
+        
+        scanner.close();
+        
+        new EMI(principal, rate, timePeriod);
+    }
+}

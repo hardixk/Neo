@@ -1,0 +1,44 @@
+// You are using Java
+import java.util.Scanner;
+
+class Bicycle {
+    protected int numberOfGears;
+    protected int speed;
+    
+    public Bicycle(int numberOfGears, int speed) {
+        this.numberOfGears = numberOfGears;
+        this.speed = speed;
+    }
+    
+    @Override
+    public String toString() {
+        return "No of gears are " + numberOfGears + "\nspeed of bicycle is " + speed;
+    }
+}
+
+class MountainBike extends Bicycle {
+    private int seatHeight;
+    
+    public MountainBike(int numberOfGears, int speed, int seatHeight) {
+        super(numberOfGears, speed);
+        this.seatHeight = seatHeight;
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\nseat height is " + seatHeight;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int numberOfGears = scanner.nextInt();
+        int speed = scanner.nextInt();
+        int seatHeight = scanner.nextInt();
+        scanner.close();
+        
+        MountainBike bike = new MountainBike(numberOfGears, speed, seatHeight);
+        System.out.println(bike);
+    }
+}

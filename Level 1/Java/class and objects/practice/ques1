@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+class NumberCounter {
+    private int number;
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int countDigits() {
+        return String.valueOf(number).length();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+
+        NumberCounter counter = new NumberCounter();
+        counter.setNumber(N);
+
+        int digitCount = counter.countDigits();
+
+        System.out.println(digitCount);
+    }
+}

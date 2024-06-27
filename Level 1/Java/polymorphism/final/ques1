@@ -1,0 +1,36 @@
+// You are using Java
+
+
+class Animal {
+    void makeSound() {
+        System.out.println("Animal");
+    }
+}
+
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Dog");
+    }
+}
+
+
+class Cat extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Cat");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Dog dog = new Dog();
+        Cat cat = new Cat();
+        
+        
+        dog.makeSound();
+        cat.makeSound();
+    }
+}

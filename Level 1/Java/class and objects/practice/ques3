@@ -1,0 +1,27 @@
+
+// You are using Java
+import java.util.Scanner;
+
+class Doctor {
+    String name;
+    String address;
+    String wardNumber;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Doctor doctor = new Doctor();
+
+        doctor.name = scanner.nextLine();
+        doctor.address = scanner.nextLine();
+        doctor.wardNumber = scanner.nextLine();
+
+        System.out.println("Name : " + doctor.name);
+        System.out.println("Address : " + doctor.address);
+        System.out.println("Ward Number : " + doctor.wardNumber);
+
+        scanner.close();
+    }
+}

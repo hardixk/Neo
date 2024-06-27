@@ -1,0 +1,65 @@
+// You are using Java
+import java.util.*;
+
+class AdvCalculator {
+    int crosssum(int a) {
+        int sum = 0;
+        while (a > 0) {
+            sum += a % 10;
+            a /= 10;
+        }
+        return sum;
+    }
+    
+    
+    boolean checkPrime(int a) {
+        if (a <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(a); i++) {
+            if (a % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    int factorial(int a) {
+        if (a == 0 || a == 1) {
+            return 1;
+        }
+        int result = 1;
+        for (int i = 2; i <= a; i++) {
+            result *= i;
+        }
+        return result;
+    }
+}
+
+
+public class Main extends AdvCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        scanner.close();
+        
+        Main calc = new Main();
+        
+        // Check if the number is prime
+        boolean isPrime = calc.checkPrime(number);
+        if (isPrime) {
+            System.out.println("Prime number");
+        } else {
+            System.out.println("Not prime number");
+        }
+        
+       
+        int factorialValue = calc.factorial(number);
+        System.out.println(factorialValue);
+        
+       
+        int sumOfDigits = calc.crosssum(factorialValue);
+        System.out.println(sumOfDigits);
+    }
+}
+
