@@ -1,0 +1,20 @@
+// You are using Java
+import java.util.*;
+class ArrayListMain{
+    ArrayListMain(List<String> arr){
+        for(int i=0; i<arr.size(); i++){
+            System.out.println(arr.get(i));
+        }
+    }
+}
+class Main{
+    public static void main(String[]args){
+        Scanner s= new Scanner(System.in);
+        List<String> arr= new ArrayList<>();
+        int N= s.nextInt();
+        for(int i=0;i<=N;i++){
+            arr.add(s.nextLine());
+        }
+        ArrayListMain obj= new ArrayListMain(arr);
+    }
+}

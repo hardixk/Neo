@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+class EmployeeAttendance implements Runnable {
+    private int[] attendance;
+    private int start;
+    private int end;
+    private int count;
+
+    public EmployeeAttendance(int[] attendance, int start, int end) {
+        this.attendance = attendance;
+        this.start = start;
+        this.end = end;
+        this.count = 0;
+    }
+
+    @Override
+    public void run() {
+        for (int i = start; i < end; i++) {
+            if (attendance[i] == 100) {
+                count++;
+            }
+        }
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.nextLine();
+        int[] attendance = new int[n];
+        for (int i = 0; i < n; i++) {
+            attendance[i] = scanner.nextInt();
+        }
+        int mid = n / 2;
+        EmployeeAttendance ea1 = new EmployeeAttendance(attendance, 0, mid);
+        EmployeeAttendance ea2 = new EmployeeAttendance(attendance, mid, n);
+        Thread thread1 = new Thread(ea1);
+        Thread thread2 = new Thread(ea2);
+        thread1.start();
+        thread2.start();
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        int winnersCount = ea1.getCount() + ea2.getCount();
+        System.out.println("Winners : " + winnersCount);
+        scanner.close();
+    }
+}

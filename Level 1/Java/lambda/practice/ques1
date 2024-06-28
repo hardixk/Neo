@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+interface Concatenate {
+    String concatStrings(String s1, String s2);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s1 = sc.nextLine();
+        String s2 = sc.nextLine();
+        Concatenate concatenate = (str1, str2) -> str1 + " " + str2;
+        String result = concatenate.concatStrings(s1, s2);
+        System.out.println(result);
+    }
+}

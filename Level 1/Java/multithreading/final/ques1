@@ -1,0 +1,108 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+class Stall implements Runnable {
+    private String stallName;
+    private String details;
+    private Double stallArea;
+    private String owner;
+    private Double stallCost;
+
+    public Stall(String stallName, String details, Double stallArea, String owner) {
+        this.stallName = stallName;
+        this.details = details;
+        this.stallArea = stallArea;
+        this.owner = owner;
+    }
+
+    @Override
+    public void run() {
+        calculateStallCost();
+    }
+
+    private void calculateStallCost() {
+        stallCost = stallArea * 150;
+    }
+
+    public String getStallName() {
+        return stallName;
+    }
+
+    public void setStallName(String stallName) {
+        this.stallName = stallName;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public Double getStallArea() {
+        return stallArea;
+    }
+
+    public void setStallArea(Double stallArea) {
+        this.stallArea = stallArea;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public Double getStallCost() {
+        return stallCost;
+    }
+
+    public void setStallCost(Double stallCost) {
+        this.stallCost = stallCost;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.nextLine();
+        Stall[] stalls = new Stall[n];
+        
+        for (int i = 0; i < n; i++) {
+            String stallName = scanner.nextLine();
+            String details = scanner.nextLine();
+            Double stallArea = scanner.nextDouble();
+            scanner.nextLine();
+            String owner = scanner.nextLine();
+            
+            stalls[i] = new Stall(stallName, details, stallArea, owner);
+        }
+        
+        Thread[] threads = new Thread[n];
+        
+        for (int i = 0; i < n; i++) {
+            threads[i] = new Thread(stalls[i]);
+            threads[i].start();
+        }
+        
+        try {
+            for (Thread thread : threads) {
+                thread.join();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    
+        Arrays.sort(stalls, (a, b) -> Double.compare(a.getStallCost(), b.getStallCost()));
+        
+        for (Stall stall : stalls) {
+            System.out.println(stall.getStallCost());
+        }
+        
+        scanner.close();
+    }
+}

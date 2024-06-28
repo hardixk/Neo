@@ -1,0 +1,34 @@
+// You are using Java
+import java.util.Scanner;
+
+interface UppercaseMover {
+    String moveUppercaseToEnd(String input);
+}
+
+class UppercaseMoverImpl implements UppercaseMover {
+    public String moveUppercaseToEnd(String input) {
+        StringBuilder lowercase = new StringBuilder();
+        StringBuilder uppercase = new StringBuilder();
+
+        for (char c : input.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                uppercase.append(c);
+            } else {
+                lowercase.append(c);
+            }
+        }
+
+        return lowercase.toString() + uppercase.toString();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        UppercaseMover mover = new UppercaseMoverImpl();
+        String result = mover.moveUppercaseToEnd(input);
+        System.out.println(result);
+        sc.close();
+    }
+}

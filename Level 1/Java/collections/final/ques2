@@ -1,0 +1,19 @@
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String line1 = sc.nextLine();
+        String[] words1 = line1.split("\\s+");
+        String line2 = sc.nextLine();
+        String[] words2 = line2.split("\\s+");
+        
+        HashSet<String> set1 = new HashSet<>(Arrays.asList(words1));
+        HashSet<String> set2 = new HashSet<>(Arrays.asList(words2));
+        
+        Set<String> intersection = new HashSet<>(set1);
+        intersection.retainAll(set2);
+    
+        System.out.println(intersection);
+    }
+}

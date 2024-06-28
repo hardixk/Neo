@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int cost = sc.nextInt();
+        int n = sc.nextInt();
+        
+        try {
+            int costPerDay = cost / n;
+            System.out.println(costPerDay);
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero");
+        }
+        
+        sc.close();
+    }
+}

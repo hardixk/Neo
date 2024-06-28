@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+interface Sum {
+    int calculateSum(int a, int b);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        Sum sum = (x, y) -> x + y;
+        int result = sum.calculateSum(a, b);
+        System.out.println(result);
+    }
+}   

@@ -1,0 +1,101 @@
+import java.util.Scanner;
+
+abstract class Complex {
+    double real1, imag1, real2, imag2;
+
+    Complex(double real1, double imag1, double real2, double imag2) {
+        this.real1 = real1;
+        this.imag1 = imag1;
+        this.real2 = real2;
+        this.imag2 = imag2;
+    }
+
+    abstract void performOperation();
+}
+
+class Addition extends Complex {
+    Addition(double real1, double imag1, double real2, double imag2) {
+        super(real1, imag1, real2, imag2);
+    }
+
+    void performOperation() {
+        double realResult = real1 + real2;
+        double imagResult = imag1 + imag2;
+        if (imagResult < 0) {
+            System.out.printf("Addition:\n\t%.4f %.4f i\n", realResult, imagResult);
+        } else {
+            System.out.printf("Addition:\n\t%.4f +%.4f i\n", realResult, imagResult);
+        }
+    }
+}
+
+class Subtraction extends Complex {
+    Subtraction(double real1, double imag1, double real2, double imag2) {
+        super(real1, imag1, real2, imag2);
+    }
+
+    void performOperation() {
+        double realResult = real1 - real2;
+        double imagResult = imag1 - imag2;
+        if (imagResult < 0) {
+            System.out.printf("Subtraction:\n\t%.4f %.4f i\n", realResult, imagResult);
+        } else {
+            System.out.printf("Subtraction:\n\t%.4f +%.4f i\n", realResult, imagResult);
+        }
+    }
+}
+
+class Multiplication extends Complex {
+    Multiplication(double real1, double imag1, double real2, double imag2) {
+        super(real1, imag1, real2, imag2);
+    }
+
+    void performOperation() {
+        double realResult = real1 * real2 - imag1 * imag2;
+        double imagResult = real1 * imag2 + imag1 * real2;
+        if (imagResult < 0) {
+            System.out.printf("Multiplication:\n\t%.4f %.4f i\n", realResult, imagResult);
+        } else {
+            System.out.printf("Multiplication:\n\t%.4f +%.4f i\n", realResult, imagResult);
+        }
+    }
+}
+
+class Division extends Complex {
+    Division(double real1, double imag1, double real2, double imag2) {
+        super(real1, imag1, real2, imag2);
+    }
+
+    void performOperation() {
+        double denom = real2 * real2 + imag2 * imag2;
+        double realResult = (real1 * real2 + imag1 * imag2) / denom;
+        double imagResult = (imag1 * real2 - real1 * imag2) / denom;
+        if (imagResult < 0 || real2==0) {
+            System.out.printf("Division:\n\t%.4f %.4f i\n", realResult, imagResult);
+        } else {
+            System.out.printf("Division:\n\t%.4f +%.4f i\n", realResult, imagResult);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double real1 = sc.nextDouble();
+        double imag1 = sc.nextDouble();
+        double real2 = sc.nextDouble();
+        double imag2 = sc.nextDouble();
+
+        Complex add = new Addition(real1, imag1, real2, imag2);
+        Complex sub = new Subtraction(real1, imag1, real2, imag2);
+        Complex mul = new Multiplication(real1, imag1, real2, imag2);
+        Complex div = new Division(real1, imag1, real2, imag2);
+
+        add.performOperation();
+        sub.performOperation();
+        mul.performOperation();
+        div.performOperation();
+
+        sc.close();
+    }
+}
